@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Excel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<div class="container">
+    <h2>Upload Excel Questions</h2>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="success-msg">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="excel" accept=".xlsx" required>
+
+        <button type="submit">Upload</button>
+    </form>
+
+{% if recent_results %}
+<hr>
+<h3>📌Recent Excel Upload Results</h3>
+
+{% for item in recent_results %}
+<div class="history-item">
+    <strong>Question:</strong>
+    <p>{{ item.question }}</p>
+
+    <strong>Answer:</strong>
+    <p>{{ item.answer }}</p>
+
+    <strong>Confidence:</strong>
+    <p>{{ item.confidence | int }}%</p>
+
+    <strong>Source:</strong>
+    <p>{{ item.source }}</p>
+</div>
+{% endfor %}
+{% endif %}
+
+
+
+    <a href="/dashboard">⬅ Back to Dashboard</a>
+</div>
+</body>
+    
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<body>
+<h2>Upload Excel Questions</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="excel" accept=".xlsx" required>
+    <br><br>
+    <button type="submit">Upload</button>
+</form>
+
+<br>
+<a href="/dashboard">Back to Dashboard</a>
+</body> -->

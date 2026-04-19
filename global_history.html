@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Global History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container history-page">
+    <h2>🌍 Global Question History</h2>
+
+    {% for item in history %}
+    <div class="history-item">
+        <p><strong>❓ Question:</strong><br>{{ item.question }}</p>
+        <p><strong>🤖 Answer:</strong><br>{{ item.answer }}</p>
+        <p><strong>📊 Confidence:</strong> {{ item.confidence |int }}%</p>
+        <p><strong>📄 Source:</strong><br>{{ item.source }}</p>
+        <p style="font-size:12px;color:#666;">🕒 {{ item.created_at }}</p>
+    </div>
+    {% endfor %}
+
+    <a href="/dashboard">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - HealthApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Register</h2>
+
+    <form method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" required><br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email"><br><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" required><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <a href="/login">Login</a>
+</div>
+
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+<div class="container">
+<h2>Register</h2>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<form method="post">
+    Username: <input type="text" name="username" required><br><br>
+    Email: <input type="email" name="email"><br><br>
+    Password: <input type="password" name="password" required><br><br>
+    <button type="submit">Register</button>
+</form>
+<a href="/login">Login</a>
+</div>
+</body>
+</html> -->

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ask Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<div class="container">
+    <h2>Ask a Question</h2>
+
+<form method="POST">
+    <textarea name="question" rows="4" cols="50"></textarea>
+    <br><br>
+    <button type="submit">Ask</button>
+</form>
+
+{% if answer %}
+<!-- QUESTION SHOWN FIRST -->
+<div class="question-box">
+    <h3>❓ Your Question</h3>
+    <p>{{ question }}</p>
+</div>
+
+<div class="answer-box">
+    <h3>Answer</h3>
+    <p>{{ answer }}</p>
+</div>
+
+
+{% if confidence is not none %}
+<div class="confidence">
+    <h4>Confidence</h4>
+    <p>{{ confidence | int }}%</p>
+
+</div>
+{% endif %}
+
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+    {% for src in sources %}
+        <li>{{ src.doc }} — Page {{ src.page }}</li>
+    {% endfor %}
+    </ul>
+</div>
+
+<!-- GO BACK BUTTON -->
+<form action="/dashboard" method="get" style="margin-top: 20px;">
+    <button type="submit">⬅ Go Back to Dashboard</button>
+{% endif %}
+<a href="/dashboard">⬅ Back to Dashboard</a>    
+</body>
+</html>
+
+
+
+
+
+
+<!-- {% if answer %}
+<h3>Answer:</h3>
+<p>{{ answer }}</p>
+
+<h4>Sources:</h4>
+<ul>
+{% for src in sources %}
+    <li>{{ src.doc }} - Page {{ src.page }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+</div> -->

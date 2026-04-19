@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - HealthApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: blue;
+        }
+    </style> -->
+</head>
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- LEFT SIDE: Existing Dashboard -->
+    <div class="container dashboard-main">
+        <h2>Welcome to HealthApp Dashboard</h2>
+
+        <div class="box dashboard-links">
+            <a href="/upload_pdf">📄 Upload PDF</a>
+            <a href="/upload_excel">📊 Upload Excel Questions</a>
+            <a href="/ask">❓ Ask Adhoc Question</a>
+            <a href="/history">📜 View History</a>
+            <a href="/download_answers">📥 Download Answers (Excel)</a>
+            <a href="/global-history">🌍 Global History</a>
+            <a href="/logout">🚪 Logout</a>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE: Uploaded Documents -->
+    <div class="dashboard-sidebar">
+        <h3>📂 Uploaded Documents</h3>
+
+        {% if documents %}
+            <ul class="doc-list">
+                {% for doc in documents %}
+                    <li>
+                        📄 {{ doc.name }}<br>
+                        <small>{{ doc.date }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p style="font-size:14px;color:#777;">No documents uploaded</p>
+        {% endif %}
+    </div>
+
+</div>
+
+</body>
+<!-- <body>
+<div class="container">
+<h2>Welcome to HealthApp Dashboard</h2>
+
+
+<div class="box dashboard-links">
+    <a href="/upload_pdf">📄 Upload PDF</a>
+    <a href="/upload_excel">📊 Upload Excel Questions</a>
+    <a href="/ask">❓ Ask Adhoc Question</a>
+    <a href="/history">📜 View History</a>
+    <a href="/download_answers">📥 Download Answers (Excel)</a>
+    <a href="/global-history">🌍 Global History</a>
+    <a href="/logout">🚪 Logout</a>
+</div>
+</div>
+</body> -->
+</html>

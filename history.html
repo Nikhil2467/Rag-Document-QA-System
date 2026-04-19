@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History - HealthApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container history-page">
+    <h2>History</h2>
+    
+    {% for item in history %}
+<div class="history-item">
+
+    <p><strong>❓ Question:</strong><br>{{ item.question }}</p>
+
+    <form method="POST" action="/update_answer">
+        <input type="hidden" name="answer_id" value="{{ item.answer_id }}">
+
+        <p><strong>✏️ Answer:</strong></p>
+        <textarea name="answer_text" rows="4" style="width:100%;">{{ item.answer }}</textarea>
+
+        <p><strong>📊 Confidence:</strong> {{ item.confidence | int }}%</p>
+
+        <p><strong>📄 Source:</strong><br>{{ item.source }}</p>
+
+        <p>
+            <label>
+                <input type="checkbox" name="is_correct"
+                       {% if item.is_correct %}checked{% endif %}>
+                ✅ Mark as Correct
+            </label>
+        </p>
+
+        <button type="submit">💾 Save Changes</button>
+    </form>
+
+    <p style="font-size:12px;color:#666;">🕒 {{ item.date }}</p>
+</div>
+{% endfor %}
+
+    <!-- {% if history_data %}
+        {% for row in history_data %}
+            <div class="history-item">
+                <p><strong>User:</strong> {{ row[0] }}</p>
+                <p><strong>Question:</strong> {{ row[1] }}</p>
+                <p><strong>Answer:</strong> {{ row[2] }}</p>
+                <p><strong>Confidence:</strong> {{ row[3] }}</p>
+                <p><strong>Source:</strong> {{ row[4] }}</p>
+                <p><small><em>{{ row[5] }}</em></small></p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No history available yet.</p>
+    {% endif %}
+     -->
+
+    <a href="/dashboard">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>
